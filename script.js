@@ -21,4 +21,39 @@ function getPlayerChoice() {
 }
 
 // play one round
+function playRound(playerChoice, computerChoice) {
+    let playerWon = getRoundWinner(playerChoice, computerChoice);
+
+    if (playerWon) {
+        return `You Won! ${playerChoice} beats ${computerChoice}`;
+    }
+    else if (playerWon === false) {
+        return `You Lost! ${computerChoice} beats ${playerChoice}`;
+    }
+    return `It's a draw! You both chose ${playerChoice}`;
+}
+
+function getRoundWinner(playerChoice, computerChoice) {
+    let playerWon = null;
+    if (playerChoice === 'Rock' && computerChoice === 'Scissors') {
+        playerWon = true;
+    }
+    else if (playerChoice === 'Paper' && computerChoice === 'Rock') {
+        playerWon = true;
+    }
+    else if (playerChoice === 'Scissors' && computerChoice === 'Paper') {
+        playerWon = true;
+    }
+    else if (playerChoice === 'Rock' && computerChoice === 'Paper') {
+        playerWon = false;
+    }
+    else if (playerChoice === 'Paper' && computerChoice === 'Scissors') {
+        playerWon = false;
+    }
+    else if (playerChoice === 'Scissors' && computerChoice === 'Rock') {
+        playerWon = false;
+    }
+    return playerWon;
+}
+
 // play one game of five rounds
