@@ -1,4 +1,3 @@
-// get computer choice
 function getComputerChoice() {
     let number = Math.floor(Math.random() * 3);
     if (number === 0) {
@@ -10,7 +9,6 @@ function getComputerChoice() {
     return 'Scissors';
 }
 
-// get player choice
 function getPlayerChoice() {
     let choice = '';
     while (choice !== 'Rock' && choice !== 'Paper' && choice !== 'Scissors') {
@@ -20,17 +18,19 @@ function getPlayerChoice() {
     return choice;
 }
 
-// play one round
 function playRound(playerChoice, computerChoice) {
     let playerWon = getRoundWinner(playerChoice, computerChoice);
 
     if (playerWon) {
-        return `You Won! ${playerChoice} beats ${computerChoice}`;
+        console.log(`You Won! ${playerChoice} beats ${computerChoice}`);
+        return playerWon;
     }
     else if (playerWon === false) {
-        return `You Lost! ${computerChoice} beats ${playerChoice}`;
+        console.log(`You Lost! ${computerChoice} beats ${playerChoice}`);
+        return playerWon;
     }
-    return `It's a draw! You both chose ${playerChoice}`;
+    console.log(`It's a tie! You both chose ${playerChoice}`);
+    return playerWon;
 }
 
 function getRoundWinner(playerChoice, computerChoice) {
@@ -56,4 +56,28 @@ function getRoundWinner(playerChoice, computerChoice) {
     return playerWon;
 }
 
-// play one game of five rounds
+function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let currentRound = 0, maxRounds = 5; currentRound < maxRounds; currentRound++) {
+        let playerWon = playRound(getPlayerChoice(), getComputerChoice());
+        if (playerWon) {
+            playerScore++;
+        }
+        else if (playerWon === false) {
+            computerScore++;
+        }
+    }
+
+    let message = '';
+    if (playerScore > computerScore) {
+        message = 'You won the game! ';
+    }
+    else if (playerScore < computerScore) {
+        message = 'You lost the game! ';
+    }
+    else {
+        message = 'No one won the game! ';
+    }
+    console.log(message +  `You scored ${playerScore} and computer scored ${computerScore}`);
+}
