@@ -9,15 +9,6 @@ function getComputerChoice() {
     return 'Scissors';
 }
 
-function getPlayerChoice() {
-    let choice = '';
-    while (choice !== 'Rock' && choice !== 'Paper' && choice !== 'Scissors') {
-        choice = prompt('Rock, paper, or scissors?');
-        choice = choice.slice(0, 1).toUpperCase() + choice.slice(1).toLowerCase();
-    }
-    return choice;
-}
-
 function playRound(playerChoice, computerChoice) {
     let playerWon = getRoundWinner(playerChoice, computerChoice);
 
@@ -56,28 +47,14 @@ function getRoundWinner(playerChoice, computerChoice) {
     return playerWon;
 }
 
-function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let currentRound = 0, maxRounds = 5; currentRound < maxRounds; currentRound++) {
-        let playerWon = playRound(getPlayerChoice(), getComputerChoice());
-        if (playerWon) {
-            playerScore++;
-        }
-        else if (playerWon === false) {
-            computerScore++;
-        }
-    }
+const buttons = document.querySelectorAll('button');
 
-    let message = '';
-    if (playerScore > computerScore) {
-        message = 'You won the game! ';
-    }
-    else if (playerScore < computerScore) {
-        message = 'You lost the game! ';
-    }
-    else {
-        message = 'No one won the game! ';
-    }
-    console.log(message +  `You scored ${playerScore} and computer scored ${computerScore}`);
+buttons.forEach(button => {
+    button.addEventListener('click', passChoices);
+})
+
+function passChoices() {
+    const playerChoice = this.textContent;
+    const computerChoice = getComputerChoice();
+    playRound(playerChoice, computerChoice);
 }
