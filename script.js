@@ -55,9 +55,9 @@ function getRoundWinner(playerChoice, computerChoice) {
 }
 
 function passChoices() {
-    const endMessage = document.querySelector('.end.message');
-    if (endMessage) resetGame();
-    const playerChoice = this.textContent;
+    const endMessageExists = document.querySelector('.end.message');
+    if (endMessageExists) resetGame();
+    const playerChoice = this.firstChild.alt;
     const computerChoice = getComputerChoice();
     playRound(playerChoice, computerChoice);
 }
