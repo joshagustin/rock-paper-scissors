@@ -60,8 +60,19 @@ function passChoices() {
 }
 
 function updateScore(playerWon) {
-    playerScore++;
+    if (playerWon) {
+        playerScore++;
+        playerScoreDisplay.textContent = playerScore;
+    }
+    else if (playerWon === false) {
+        computerScore++
+        computerScoreDisplay.textContent = computerScore;
+    }
+    
 }
 
 let playerScore = 0;
-let computerScore
+let computerScore = 0;
+
+const playerScoreDisplay = document.querySelector('.player.score');
+const computerScoreDisplay = document.querySelector('.computer.score');
