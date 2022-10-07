@@ -11,15 +11,14 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice) {
     let playerWon = getRoundWinner(playerChoice, computerChoice);
-
     if (playerWon) {
-        console.log(`You Won! ${playerChoice} beats ${computerChoice}`);
+        updateMessage(`You won! ${playerChoice} beats ${computerChoice}`);
     }
     else if (playerWon === false) {
-        console.log(`You Lost! ${computerChoice} beats ${playerChoice}`);
+        updateMessage(`You lost! ${computerChoice} beats ${playerChoice}`);
     }
     else {
-        console.log(`It's a tie! You both chose ${playerChoice}`);
+        updateMessage(`It's a tie! You both chose ${playerChoice}`);
     }
     updateScore(playerWon);
 }
@@ -54,21 +53,49 @@ buttons.forEach(button => {
 })
 
 function passChoices() {
+    const endMessage = document.querySelector('.end.message');
+    if (endMessage) resetGame();
     const playerChoice = this.textContent;
     const computerChoice = getComputerChoice();
     playRound(playerChoice, computerChoice);
 }
 
 function updateScore(playerWon) {
-    if (playerWon) {
-        playerScore++;
-        playerScoreDisplay.textContent = playerScore;
-    }
-    else if (playerWon === false) {
-        computerScore++
-        computerScoreDisplay.textContent = computerScore;
-    }
+    if (playerWon) playerScore++;
+    else if (playerWon === false) computerScore++;
+    updateScoreDisplay(playerScore, computerScore);
     
+    if (playerScore > 4 || computerScore > 4) {
+        displayGameWinner(playerWon);
+    }
+}
+
+function updateMessage(message) {
+    displayMessage.textContent = message;
+}
+
+function displayGameWinner(playerWon) {
+    const endMessage = document.createElement('p');
+    endMessage.classList.add('end', 'message');
+    if (playerWon) {
+        endMessage.textContent = 'You won the game! Can you win twice?';
+    }
+    else {
+        endMessage.textContent = 'You lost the game. Better luck next time!';
+    }
+    body.appendChild(endMessage);
+}
+
+function updateScoreDisplay(playerScore, computerScore) {
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+}
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    updateScoreDisplay(playerScore, computerScore);
+    body.removeChild(body.lastChild);
 }
 
 let playerScore = 0;
@@ -76,3 +103,5 @@ let computerScore = 0;
 
 const playerScoreDisplay = document.querySelector('.player.score');
 const computerScoreDisplay = document.querySelector('.computer.score');
+const displayMessage = document.querySelector('p');
+const body = document.querySelector('body');

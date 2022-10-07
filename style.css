@@ -3,6 +3,11 @@
   margin: 0;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .player-container,
 .computer-container {
   width: 100px;
@@ -25,4 +30,9 @@
 button {
   width: 100px;
   padding: 20px;
+}
+
+p {
+  margin-top: 50px;
+  align-self: center;
 }
