@@ -8,16 +8,24 @@
   flex-direction: column;
 }
 
-.player-container,
-.computer-container {
-  width: 100px;
+.player.container,
+.computer.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  width: 120px;
   text-align: center;
+  background-color: #FFC300;
+  border-radius: 10px;
+  border: 2px solid #000000;
 }
 
 .scores-container {
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  gap: 50px;
 }
 
 .btn-container {
@@ -32,6 +40,9 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #FFC300;
+  border-radius: 10px;
+  border: 2px solid #000000;
 }
 
 p {
@@ -41,5 +52,27 @@ p {
 
 img {
   height: auto;
-  width: 100px;
+  max-width: 100px;
+}
+
+body {
+  background-color: #900C3F;
+}
+
+.text,
+.score {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Oswald;
+}
+
+.message {
+  color: #FFFFFF;
+  font-size: 20px;
+  font-family: Poppins;
+  margin-top: 20px;
+}
+
+.end {
+  color: #FFC300;
 }
