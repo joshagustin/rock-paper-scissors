@@ -14,14 +14,14 @@ function playRound(playerChoice, computerChoice) {
 
     if (playerWon) {
         console.log(`You Won! ${playerChoice} beats ${computerChoice}`);
-        return playerWon;
     }
     else if (playerWon === false) {
         console.log(`You Lost! ${computerChoice} beats ${playerChoice}`);
-        return playerWon;
     }
-    console.log(`It's a tie! You both chose ${playerChoice}`);
-    return playerWon;
+    else {
+        console.log(`It's a tie! You both chose ${playerChoice}`);
+    }
+    updateScore(playerWon);
 }
 
 function getRoundWinner(playerChoice, computerChoice) {
@@ -58,3 +58,10 @@ function passChoices() {
     const computerChoice = getComputerChoice();
     playRound(playerChoice, computerChoice);
 }
+
+function updateScore(playerWon) {
+    playerScore++;
+}
+
+let playerScore = 0;
+let computerScore
