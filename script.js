@@ -1,12 +1,20 @@
+let playerScore = 0;
+let computerScore = 0;
+
+const playerScoreDisplay = document.querySelector('.player.score');
+const computerScoreDisplay = document.querySelector('.computer.score');
+const displayMessage = document.querySelector('p');
+const body = document.querySelector('body');
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', passChoices);
+})
+
 function getComputerChoice() {
-    let number = Math.floor(Math.random() * 3);
-    if (number === 0) {
-        return 'Rock';
-    }
-    else if (number === 1) {
-        return 'Paper';
-    }
-    return 'Scissors';
+    let index = Math.floor(Math.random() * 3);
+    const choices = ['Rock', 'Paper', 'Scissors'];
+    return choices[index];
 }
 
 function playRound(playerChoice, computerChoice) {
@@ -45,12 +53,6 @@ function getRoundWinner(playerChoice, computerChoice) {
     }
     return playerWon;
 }
-
-const buttons = document.querySelectorAll('button');
-
-buttons.forEach(button => {
-    button.addEventListener('click', passChoices);
-})
 
 function passChoices() {
     const endMessage = document.querySelector('.end.message');
@@ -97,11 +99,3 @@ function resetGame() {
     updateScoreDisplay(playerScore, computerScore);
     body.removeChild(body.lastChild);
 }
-
-let playerScore = 0;
-let computerScore = 0;
-
-const playerScoreDisplay = document.querySelector('.player.score');
-const computerScoreDisplay = document.querySelector('.computer.score');
-const displayMessage = document.querySelector('p');
-const body = document.querySelector('body');
