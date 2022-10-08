@@ -71,10 +71,13 @@ img {
 
 body {
   background-color: #000000;
+  display: flex;
+  flex-direction: column;
 }
 
 .text,
-.score {
+.score,
+.reset {
   font-size: 20px;
   font-weight: 700;
   font-family: Oswald;
@@ -89,4 +92,16 @@ body {
 
 .end {
   color: #FFC300;
+}
+
+.reset {
+  background-color:  #ff6f00;
+  width: 100px;
+  align-self: center;
+  margin: 20px 0 -80px 0;
+}
+
+.reset:hover,
+.reset:active {
+  background-color:  #ff6f00ba;
 }

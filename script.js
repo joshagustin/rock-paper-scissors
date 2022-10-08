@@ -9,7 +9,7 @@ const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
     button.addEventListener('click', passChoices);
-})
+});
 
 function getComputerChoice() {
     let index = Math.floor(Math.random() * 3);
@@ -86,6 +86,7 @@ function displayGameWinner(playerWon) {
         endMessage.textContent = 'You lost the game. Better luck next time!';
     }
     body.appendChild(endMessage);
+    addResetButton();
 }
 
 function updateScoreDisplay(playerScore, computerScore) {
@@ -97,5 +98,26 @@ function resetGame() {
     playerScore = 0;
     computerScore = 0;
     updateScoreDisplay(playerScore, computerScore);
-    body.removeChild(body.lastChild);
+    updateMessage('Make a choice!');
+    const endMessage = document.querySelector('.end.message');
+    body.removeChild(endMessage);
+    const resetButton = document.querySelector('.reset');
+    body.removeChild(resetButton);
+    disableChoiceButtons(false);
+}
+
+function addResetButton() {
+    const resetButton = document.createElement('button');
+    resetButton.classList.add('reset');
+    resetButton.textContent = 'RESET';
+    const choiceContainer = document.querySelector('.btn-container');
+    body.insertBefore(resetButton, choiceContainer);
+    resetButton.addEventListener('click', resetGame);
+    disableChoiceButtons(true);
+}
+
+function disableChoiceButtons(status) {
+    buttons.forEach(button => {
+        button.disabled = status;
+    });
 }
