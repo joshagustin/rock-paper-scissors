@@ -33,6 +33,7 @@
   justify-content: center;
   gap: 10px;
   margin-top: 100px;
+  padding: 0 20px;
 }
 
 button {
@@ -42,8 +43,20 @@ button {
   align-items: center;
   background-color: #FFC300;
   border-radius: 10px;
-  border: 2px solid #000000;
+  border: none;
   width: 150px;
+  box-shadow: 0 10px #808080;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ffc400df;
+}
+
+button:active {
+  background-color: #ffc400df;
+  box-shadow: 0 4px #80808080;
+  transform: translateY(6px);
 }
 
 p {
