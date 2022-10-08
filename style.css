@@ -48,7 +48,7 @@ button {
 
 p {
   margin-top: 50px;
-  align-self: center;
+  text-align: center;
 }
 
 img {
@@ -57,7 +57,7 @@ img {
 }
 
 body {
-  background-color: #900C3F;
+  background-color: #000000;
 }
 
 .text,
