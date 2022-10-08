@@ -43,6 +43,7 @@ button {
   background-color: #FFC300;
   border-radius: 10px;
   border: 2px solid #000000;
+  width: 150px;
 }
 
 p {
@@ -52,7 +53,7 @@ p {
 
 img {
   height: auto;
-  max-width: 100px;
+  max-width: 100%;
 }
 
 body {
