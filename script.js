@@ -6,6 +6,8 @@ const computerScoreDisplay = document.querySelector('.computer.score');
 const displayMessage = document.querySelector('p');
 const body = document.querySelector('body');
 const buttons = document.querySelectorAll('button');
+const endContainer = document.querySelector('.end-container');
+const resetContainer = document.querySelector('.reset-container');
 
 buttons.forEach(button => {
     button.addEventListener('click', passChoices);
@@ -85,7 +87,7 @@ function displayGameWinner(playerWon) {
     else {
         endMessage.textContent = 'You lost the game. Better luck next time!';
     }
-    body.appendChild(endMessage);
+    endContainer.appendChild(endMessage);
     addResetButton();
 }
 
@@ -100,9 +102,9 @@ function resetGame() {
     updateScoreDisplay(playerScore, computerScore);
     updateMessage('Make a choice!');
     const endMessage = document.querySelector('.end.message');
-    body.removeChild(endMessage);
+    endContainer.removeChild(endMessage);
     const resetButton = document.querySelector('.reset');
-    body.removeChild(resetButton);
+    resetContainer.removeChild(resetButton);
     disableChoiceButtons(false);
 }
 
@@ -110,8 +112,7 @@ function addResetButton() {
     const resetButton = document.createElement('button');
     resetButton.classList.add('reset');
     resetButton.textContent = 'RESET';
-    const choiceContainer = document.querySelector('.btn-container');
-    body.insertBefore(resetButton, choiceContainer);
+    resetContainer.appendChild(resetButton);
     resetButton.addEventListener('click', resetGame);
     disableChoiceButtons(true);
 }
